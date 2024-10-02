@@ -10,11 +10,16 @@ import { Note } from '../../models/note';
 })
 export class NotesComponent implements OnInit {
   notes: Note[] = [];
+  selectedNote: Note | null = null;
   errorMessage: string = '';
 
   constructor(private noteService: NoteService) {}
 
   ngOnInit(): void {
+    this.loadNotes();
+  }
+
+  loadNotes(): void {
     this.noteService.getNotes().subscribe(
       (data: Note[]) => {
         console.log('Received notes:', data);

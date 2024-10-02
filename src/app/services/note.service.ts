@@ -10,12 +10,19 @@ import { Note } from '../models/note';
 export class NoteService {
   private apiUrl = '/api/notes';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getNotes(): Observable<Note[]> {
     return this.http.get<{ notes: Note[] }>(this.apiUrl).pipe(
       map(response => response.notes)
     );
   }
+
+  getNoteById(id: number): Observable<Note> {
+    return this.http.get<{ note: Note }>(`${this.apiUrl}/view/${id}`).pipe(
+      map(response => response.note)
+    );
+  }
+
 
 }

@@ -1,0 +1,10 @@
+<div *ngIf="note; else noNote">
+    <h2>{{ note.title }}</h2>
+    <p>{{ note.content }}</p>
+    <small>{{ note.createdAt | date: 'medium' }}</small>
+    <button routerLink="/notes">Back to All Notes</button>
+</div>
+
+<ng-template #noNote>
+    <p>Note not found.</p>
+</ng-template>
