@@ -1,7 +1,14 @@
+.parent {
+    display: flex;
+    justify-content: center;
+    
+}
+
 .wrapper {
     height: auto;
     padding: 20px;
-    width: 100%;
+    max-width: 90%;
+
 
     flex-grow:1;
 }
