@@ -2,7 +2,7 @@
 <div *ngIf="notes.length > 0; else noNotes">
   <!--<h2>All Notes</h2>-->
   <ul>
-    <li *ngFor="let note of notes ">
+    <li *ngFor="let note of notes" (click)="note.id ? viewNoteById(note.id) : null">
       <h3>{{ note.title || ' ' }}</h3>
       <p>{{ note.content || ' ' }}</p>
       <small>{{ note.createdAt | date: 'medium' }}</small>

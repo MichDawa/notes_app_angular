@@ -1,5 +1,5 @@
-// src/app/components/notes/notes.component.ts
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NoteService } from '../../services/note.service';
 import { Note } from '../../models/note';
 
@@ -13,7 +13,7 @@ export class NotesComponent implements OnInit {
   selectedNote: Note | null = null;
   errorMessage: string = '';
 
-  constructor(private noteService: NoteService) {}
+  constructor(private noteService: NoteService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadNotes();
@@ -36,5 +36,13 @@ export class NotesComponent implements OnInit {
         console.error('Error fetching notes:', error);
       }
     );
+  }
+
+  viewNoteById(id: number | undefined): void {
+    if (id) {
+      this.router.navigate(['/notes/view', id]);
+    } else {
+      console.error('Note ID is undefined, cannot navigate.');
+    }
   }
 }
