@@ -9,6 +9,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { NoteDetailComponent } from './components/note-detail/note-detail.component';
+import { NoteEditComponent } from './components/note-edit/note-edit.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { NoteDetailComponent } from './components/note-detail/note-detail.compon
     HeaderComponent,
     FooterComponent,
     NoteDetailComponent,
+    NoteEditComponent,
   ],
   imports: [
     BrowserModule,

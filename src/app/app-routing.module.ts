@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NotesComponent } from './components/notes/notes.component';
 import { NoteDetailComponent } from './components/note-detail/note-detail.component';
+import { NoteEditComponent } from './components/note-edit/note-edit.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,10 @@ const routes: Routes = [
   },
   {
     path: 'notes/view/:id',
+    component: NoteDetailComponent
+  },
+  {
+    path: 'notes/edit/:id',
     component: NoteDetailComponent
   },
   

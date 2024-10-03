@@ -1,8 +1,17 @@
 <button routerLink="/notes">Back</button>
+
 <div *ngIf="note; else noNote">
-    <h2>{{ note.title }}</h2>
-    <p>{{ note.content }}</p>
-    <small>{{ note.createdAt | date: 'medium' }}</small>
+    <form>
+        <div>
+            <input id="title" [(ngModel)]="note.title" name="title" type="text" />
+        </div>
+
+        <div>
+            <textarea id="content" [(ngModel)]="note.content" name="content"></textarea>
+        </div>
+
+        <small>{{ note.createdAt | date: 'medium' }}</small>
+    </form>
 </div>
 
 <ng-template #noNote>
