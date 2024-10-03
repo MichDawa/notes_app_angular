@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NoteService } from '../../services/note.service';
 import { Note } from '../../models/note';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-note-detail',
@@ -14,7 +15,9 @@ export class NoteDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private noteService: NoteService
+    private noteService: NoteService,
+    private router: Router,
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
@@ -40,4 +43,25 @@ export class NoteDetailComponent implements OnInit {
     textarea.style.height = `${textarea.scrollHeight}px`;
   }
   
+  saveNote(): void {
+    if (!this.note) {
+      console.error('Note is null. Cannot save.');
+      return;
+    }
+
+    const noteData = {
+      title: this.note.title,
+      content: this.note.content
+    };
+
+    this.http.put(`/api/notes/edit/${this.note.id}`, noteData).subscribe(
+      (response) => {
+        console.log('Note updated successfully', response);
+        this.router.navigate([`/notes/view/${this.note?.id}`]);
+      },
+      (error) => {
+        console.error('Error updating note:', error);
+      }
+    );
+  }
 }
