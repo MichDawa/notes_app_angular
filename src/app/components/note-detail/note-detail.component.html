@@ -1,16 +1,18 @@
-<button routerLink="/notes">Back</button>
 
 <div *ngIf="note; else noNote">
     <form>
+        <span>
+            <ion-icon name="arrow-back-outline" routerLink="/notes" class="back-icon"></ion-icon>
+        </span>
+        <small>Edited: {{ note.createdAt | date: 'medium' }}</small>
         <div>
-            <input id="title" [(ngModel)]="note.title" name="title" type="text" />
+            <input id="title" [(ngModel)]="note.title" name="title" type="text" placeholder="Note title" />
         </div>
 
         <div>
-            <textarea id="content" [(ngModel)]="note.content" name="content"></textarea>
+            <textarea id="content" [(ngModel)]="note.content" (input)="autoResize($event)" name="content" placeholder="What's on your mind?"></textarea>
         </div>
 
-        <small>{{ note.createdAt | date: 'medium' }}</small>
     </form>
 </div>
 

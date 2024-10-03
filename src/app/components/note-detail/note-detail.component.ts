@@ -33,4 +33,11 @@ export class NoteDetailComponent implements OnInit {
       }
     );
   }
+
+  autoResize(event: Event): void {
+    const textarea = event.target as HTMLTextAreaElement;
+    textarea.style.height = 'auto';
+    textarea.style.height = `${textarea.scrollHeight}px`;
+  }
+  
 }
