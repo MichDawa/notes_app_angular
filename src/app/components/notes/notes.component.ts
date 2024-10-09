@@ -19,11 +19,6 @@ export class NotesComponent implements OnInit {
     this.loadNotes();
   }
 
-  addNote(): void {
-    console.log('Add note triggered');
-    this.router.navigate(['/notes/new']);
-  }
-
   loadNotes(): void {
     this.noteService.getNotes().subscribe(
       (data: Note[]) => {
@@ -50,4 +45,48 @@ export class NotesComponent implements OnInit {
       console.error('Note ID is undefined, cannot navigate.');
     }
   }
+
+  createNewNote(): void {
+    const newNote = {
+      title: '',
+      content: ''
+    };
+  
+    this.noteService.createNote(newNote).subscribe(
+      (response) => {
+        console.log('New note created:', response);
+        
+        const newNoteId = response.note.id;
+  
+        if (newNoteId) {
+          this.noteService.getNoteById(newNoteId).subscribe(
+            (note) => {
+              console.log('Note fetched after creation:', note);
+
+              this.router.navigate(['/notes/view', newNoteId]).then((navigated) => {
+                if (navigated) {
+                  console.log(`Successfully navigated to /notes/view/${newNoteId}`);
+                } else {
+                  console.error(`Navigation to /notes/view/${newNoteId} failed.`);
+                }
+              });
+            },
+
+            (error) => {
+              console.error('Error fetching the new note:', error);
+            }
+          );
+
+        } else {
+          console.error('New note ID not found in response.');
+        }
+      },
+      
+      (error) => {
+        console.error('Error creating new note:', error);
+      }
+    );
+  }
+  
+  
 }

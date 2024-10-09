@@ -24,5 +24,8 @@ export class NoteService {
     );
   }
 
+  createNote(note: { title: string; content: string }): Observable<{ message: string; note: { id: number } }> {
+    return this.http.post<{ message: string; note: { id: number } }>(`${this.apiUrl}/new`, note);
+  }
 
 }

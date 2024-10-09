@@ -25,28 +25,6 @@ export class NoteDetailComponent implements OnInit {
     this.viewNoteById(id);
   }
 
-  addNote(): void {
-    if (!this.note) {
-      console.error('Note is null. Cannot add.');
-      return;
-    }
-  
-    const noteData = {
-      title: this.note.title,
-      content: this.note.content
-    };
-  
-    this.http.post(`/api/notes/new`, noteData).subscribe(
-      (response) => {
-        console.log('Note added successfully', response);
-        // Redirect to the newly created note's detail view or to the notes list
-        this.router.navigate(['/notes']);
-      },
-      (error) => {
-        console.error('Error adding note:', error);
-      }
-    );
-  }
   viewNoteById(id: number): void {
     this.noteService.getNoteById(id).subscribe(
       (note: Note) => {
