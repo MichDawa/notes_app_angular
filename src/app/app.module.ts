@@ -15,9 +15,11 @@ import { NoteDetailComponent } from './components/note-detail/note-detail.compon
 @NgModule({
   declarations: [
     AppComponent,
-    NotesComponent,
+    
     HeaderComponent,
     FooterComponent,
+    
+    NotesComponent,
     NoteDetailComponent,
   ],
   imports: [

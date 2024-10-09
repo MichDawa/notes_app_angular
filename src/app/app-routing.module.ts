@@ -9,6 +9,11 @@ const routes: Routes = [
     component: NotesComponent
   },
   {
+    path: '',
+    redirectTo: '/notes',
+    pathMatch: 'full'
+  },
+  {
     path: 'notes/view/:id',
     component: NoteDetailComponent
   },
