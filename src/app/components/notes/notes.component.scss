@@ -48,6 +48,29 @@ li {
     }
 }
 
+.addNote {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 28px;
+    cursor: pointer;
+    margin-left: auto;
+    
+    transition: box-shadow 0.2s ease;
+    
+    position: fixed;
+    right: 3rem; 
+    bottom: 2rem;
+    z-index: 1000;
+    
+    &:hover {
+        color: black;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        
+    }
+}
+
 .alert {
     margin-top: 16px;
     padding: 12px;

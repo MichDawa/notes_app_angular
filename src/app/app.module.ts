@@ -7,17 +7,12 @@ import { IonicModule } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotesComponent } from './components/notes/notes.component';
-import { HeaderComponent } from './layout/header/header.component';
-import { FooterComponent } from './layout/footer/footer.component';
 import { NoteDetailComponent } from './components/note-detail/note-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    
-    HeaderComponent,
-    FooterComponent,
     
     NotesComponent,
     NoteDetailComponent,

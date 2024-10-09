@@ -19,6 +19,11 @@ export class NotesComponent implements OnInit {
     this.loadNotes();
   }
 
+  addNote(): void {
+    console.log('Add note triggered');
+    this.router.navigate(['/notes/new']);
+  }
+
   loadNotes(): void {
     this.noteService.getNotes().subscribe(
       (data: Note[]) => {
