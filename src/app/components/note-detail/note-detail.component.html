@@ -1,5 +1,5 @@
 
-<div *ngIf="note; else noNote">
+<div *ngIf="note; else noNote" [ngStyle]="{'background-color': note.color}">
     <form>
         <span>
             <ion-icon name="arrow-back-outline" routerLink="/notes" class="back-icon"></ion-icon>
